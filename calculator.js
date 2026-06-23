@@ -19,7 +19,6 @@ for (let i = 9; i >= 0; i--) {
 
     numbercontainer.append(num);
 
-    // FIXED: only ONE event listener
     num.addEventListener("click", () => {
         if (!isSecond) {
             firstNumber += num.textContent;
@@ -58,7 +57,7 @@ for (let i = 0; i < 5; i++) {
 
             output.value = result;
 
-            // reset for next calculation
+
             firstNumber = result.toString();
             secondNumber = "";
             operator = "";
