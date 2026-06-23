@@ -10,9 +10,6 @@ let output=document.querySelector(".output")
 
 operations=["+","-","*","/","="]
 
-let firstnum=""
-let secondnum=""
-let operation1=""
 
 for (let i=9; i>=0; i--){
     let num=document.createElement("button")
@@ -20,7 +17,7 @@ for (let i=9; i>=0; i--){
     num.textContent=i
     numbercontainer.append(num)
     num.addEventListener("click",() =>{
-    output.append(num.textContent)
+    output.value += num.textContent;
 })
 }
 
@@ -30,7 +27,7 @@ for(let i=0; i<5; i++){
     choice.textContent=operations[i]
     operationcontainer.append(choice)
     choice.addEventListener("click",()=>{
-        output.append(choice.textContent)
+        output.value += choice.textContent;
     })
 }
 
