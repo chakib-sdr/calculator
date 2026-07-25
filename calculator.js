@@ -1,74 +1,138 @@
-let numbercontainer = document.querySelector(".numbercontainer");
-let calculatorcontainer = document.querySelector(".calculatorcontainer");
-let screencontainer = document.querySelector(".screencontainer");
-let operationcontainer = document.querySelector(".operationcontainer");
-let output = document.querySelector(".output");
+const array = [7, 8, 9, "reset", 4, 5, 6, "/", 1, 2, 3, "*", 0, "=", "+", "-"] 
 
-let operations = ["+", "-", "*", "/", "="];
+const containerbuttons = document.querySelector(".containerbuttons") 
+const display = document.querySelector(".display") 
 
-let firstNumber = "";
-let secondNumber = "";
-let operator = "";
-let isSecond = false;
+let result 
+let a = "" 
+let b = "" 
+let operator 
 
-
-for (let i = 9; i >= 0; i--) {
-    let num = document.createElement("button");
-    num.className = "btn";
-    num.textContent = i;
-
-    numbercontainer.append(num);
-
-    num.addEventListener("click", () => {
-        if (!isSecond) {
-            firstNumber += num.textContent;
-            output.value = firstNumber;
-        } else {
-            secondNumber += num.textContent;
-            output.value = secondNumber;
-        }
-    });
+for (let i = 0; i < array.length; i++) {
+    const btn = document.createElement("button")
+    btn.textContent = array[i]
+    btn.className = "btn"   
+    containerbuttons.appendChild(btn)   
 }
 
+const btns = document.querySelectorAll(".btn")   
 
-for (let i = 0; i < 5; i++) {
-    let choice = document.createElement("button");
-    choice.className = "operation";
-    choice.textContent = operations[i];
+btns.forEach(button => {
 
-    operationcontainer.append(choice);
+    button.addEventListener("click", () => {
 
+        
+        if (button.textContent === "reset") {
+            display.textContent = ""   
+            a = ""   
+            b = ""   
+            operator = undefined   
+            result = undefined   
+            return   
+        }
 
-    choice.addEventListener("click", () => {
+        
+        if (!isNaN(button.textContent)) {
 
-        if (choice.textContent === "=") {
-
-            let a = Number(firstNumber);
-            let b = Number(secondNumber);
-
-            let result = 0;
-
-            if (operator === "+") result = a + b;
-            else if (operator === "-") result = a - b;
-            else if (operator === "*") result = a * b;
-            else if (operator === "/") {
-                result = (b !== 0) ? a / b : "Error";
+            if (operator === undefined) {
+                a += button.textContent   
+            } else {
+                b += button.textContent   
             }
 
-            output.value = result;
-
-
-            firstNumber = result.toString();
-            secondNumber = "";
-            operator = "";
-            isSecond = false;
-
-        } else {
-            operator = choice.textContent;
-            isSecond = true;
-            output.value = operator;
+            display.textContent += button.textContent   
+            return   
         }
-    });
-}
 
-calculatorcontainer.append(numbercontainer);
+        
+        if (
+            button.textContent === "+" ||
+            button.textContent === "-" ||
+            button.textContent === "*" ||
+            button.textContent === "/"
+        ) {
+
+            
+            if (a === "") return   
+
+            
+            
+            if( b!=="" && operator !== undefined){
+
+                
+            if (operator === "+") {
+                result = Number(a) + Number(b)   
+            }
+
+            if (operator === "-") {
+                result = Number(a) - Number(b)   
+            }
+
+            if (operator === "*") {
+                result = Number(a) * Number(b)   
+            }
+
+            if (operator === "/") {
+                if (Number(b) !== 0) {
+                    result = Number(a) / Number(b)   
+                } else {
+                    result = "Error"   
+                }
+            }
+            display.textContent = result   
+
+            
+            a = String(result)   
+            b = ""   
+            operator = undefined 
+        }
+
+    operator = button.textContent;
+    display.textContent += operator;
+    return
+    }
+
+        
+        if (button.textContent === "=") {
+
+            if (a === "" || b === "" || operator === undefined) return   
+
+            if( b!=="" && operator !== undefined){
+
+                
+            if (operator === "+") {
+                result = Number(a) + Number(b)   
+            }
+
+            if (operator === "-") {
+                result = Number(a) - Number(b)   
+            }
+
+            if (operator === "*") {
+                result = Number(a) * Number(b)   
+            }
+
+            if (operator === "/") {
+                if (Number(b) !== 0) {
+                    result = Number(a) / Number(b)   
+                } else {
+                    result = "Error"   
+                }
+            }
+
+            display.textContent = result   
+
+            
+            a = String(result)   
+            b = ""   
+            operator = undefined 
+            return
+            }
+           
+  
+        }
+        
+
+    })   
+
+});

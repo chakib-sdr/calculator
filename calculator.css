@@ -1,63 +1,66 @@
 body{
     display: flex;
-    justify-content: center;
-}
-.calculatorcontainer{
-    display: flex;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    height: 550px;
+    width: 400px;
+    padding: 20px;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #0F172A;
+    background-color: #F5A623;
+    border: solid 5px #3D2817;
+    border-radius: 50px;  
+    gap: 20px;
 }
-.output{
+.topcontainer{
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #F9FAFB;
-    border: none;
-    color: #0F172A;
-    font-size: xx-large;
-    width: 314px;
-    height: 70px;
-    border-radius: 100px;
-    margin-bottom: 15px;
+    justify-content: flex-end;
 }
-.operationcontainer{
+.graycontainer{
+    background-color: #4A4A4A;
+    width: 150px;
+    height: 50px;
+    border: solid #3D2817;
+}
+.containerdisplay{
     display: flex;
     justify-content: center;
-    background-color: #0F172A;
-    gap: 33px;
-    margin-bottom: 15px;
+    border: solid #3D2817;
+}
+.display{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    background-color: #B8E8F5;
+    border: solid #4A90D9;
+    font-family: 'DSEG7 Classic', monospace;
+    font-size: 40px;
+    width: 400px;
+    height: 50px;
+    overflow: hidden;
 }
 
-.operation{
-    background-color: #0F172A;
-    border: none;
-    color: #F9FAFB;
-    font-size: larger;
-    width: 50px;
-    height: 70px;
-    border-radius: 100px;
+.containerbuttons{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,1fr);
+    gap: 5px;
+    height: 300px;
 }
 .btn{
-    background-color: #1E293B;
-    border: none;
-    color: #F9FAFB;
-    font-size: larger;
-    width: 50px;
-    height: 70px;
-    border-radius: 100px;
+    background-color: #F0DFC0;
+    border: solid #3D2817;
+    border-radius: 5px;
+
+    height: 50px;
+    font-family: 'Fredoka', sans-serif;
+    color: #3D2817;
+    font-size: 30px;
 }
-.btn:active{
-    opacity: 0.7;
-}
-.operation:active{
-    opacity: 0.7;
-}
-.numbercontainer{
-    display: grid;
-    grid-template-columns: repeat(3,100px);
-    grid-template-rows: repeat(3,100px);
-    background-color:#0F172A;
+.btn:hover{
+    opacity: 0.5;
 }
